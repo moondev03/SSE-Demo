@@ -1,11 +1,14 @@
 package com.example.ssedemo
 
+import io.ktor.server.engine.embeddedServer
+import io.ktor.server.netty.Netty
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 
 @SpringBootApplication
 class SseDemoApplication
 
 fun main(args: Array<String>) {
-    runApplication<SseDemoApplication>(*args)
+    embeddedServer(Netty, port = 8080) {
+        questionRoutes()
+    }.start(wait = true)
 }

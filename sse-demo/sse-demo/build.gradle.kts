@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.25"
     id("org.springframework.boot") version "3.5.5"
     id("io.spring.dependency-management") version "1.1.7"
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 group = "com.example"
@@ -20,12 +21,12 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("io.ktor:ktor-server-core:2.3.5")
+    implementation("io.ktor:ktor-server-netty:2.3.5")
+    implementation("io.ktor:ktor-server-content-negotiation:2.3.6")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 }
 
 kotlin {
